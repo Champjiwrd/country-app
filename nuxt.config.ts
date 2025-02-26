@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/country-app/',
     head: {
-      title: 'เกมทายแผนที่ | เกมทดสอบความรู้ภูมิศาสตร์ของคุณ',
       meta: [
         { charset: 'utf-8' },
         {
