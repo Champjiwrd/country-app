@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/country-app/',
     head: {
+      title: 'Title from nuxt.config',
       meta: [
         { charset: 'utf-8' },
         {
@@ -13,8 +14,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'description',
-          content:
-            'ทายแผนที่ต่าง ๆ และทดสอบความรู้ภูมิศาสตร์ของคุณ! เกมสนุก ๆ ที่จะช่วยคุณจำแผนที่ได้ดียิ่งขึ้น',
+          content: 'description from nuxt.config',
         },
       ],
     },

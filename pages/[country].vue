@@ -9,8 +9,10 @@ const route = useRoute();
 const country = route.params.country;
 
 useHead({
-  title: `I like ${country.charAt(0).toUpperCase() + country.slice(1)}`,
-  meta: [{ name: 'description', content: `description ${country}` }],
+  title: `title from ${country} [country] page`,
+  meta: [
+    { name: 'description', content: `description from ${country} [country] ` },
+  ],
 });
 </script>
 
