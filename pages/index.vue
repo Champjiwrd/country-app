@@ -6,7 +6,7 @@
 const route = useRoute();
 const title = route.query.test ? `Title from index ${route.query.test}` : `Title from index page only`
 useHead({
-  title: `Title from index page`,
+  title,
   meta: [{ name: 'description', content: `description from index page` }],
 });
 </script>
