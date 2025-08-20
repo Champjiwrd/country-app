@@ -7,11 +7,13 @@
 <script setup>
 const route = useRoute();
 const name = route.params.name;
-
-// useHead({
-//   title: name ? `title from ${name} [name] page` : 'title from [name] page but cannot use name',
-//   meta: [{ name: 'description', content: name? `description from ${name} [name] ` : 'description from name but connot use name' }],
-// });
+defineRouteRules({
+  prerender: true,
+});
+useHead({
+  title: name ? `title from ${name} [name] page` : 'title from [name] page but cannot use name',
+  meta: [{ name: 'description', content: name? `description from ${name} [name] ` : 'description from name but connot use name' }],
+});
 // useSeoMeta({
 //   title: () => name ? `seo meta: title from ${name} [name] page` : 'title from [name] page but cannot use name',
 //   description: () => name? `seo meta: description from ${name} [name] ` : 'description from name but connot use name' ,
