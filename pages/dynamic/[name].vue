@@ -9,8 +9,8 @@ const route = useRoute();
 const name = route.params.name;
 
 useHead({
-  title: `title from ${name} [name] page`,
-  meta: [{ name: 'description', content: `description from ${name} [name] ` }],
+  title: name ? `title from ${name} [name] page` : 'title from [name] page but cannot use name',
+  meta: [{ name: 'description', content: name? `description from ${name} [name] ` : 'description from name but connot use name' }],
 });
 </script>
 
