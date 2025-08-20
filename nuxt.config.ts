@@ -21,4 +21,7 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   ssr: true,
+  routeRules: {
+    "/dynamic/**": { prerender: true },
+  },
 });
