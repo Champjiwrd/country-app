@@ -8,8 +8,8 @@
 const name = 'test'
 
 useHead({
-  title: name ? `title from ${name} [name] page` : 'title from [name] page but cannot use name',
-  meta: [{ name: 'description', content: name? `description from ${name} [name] ` : 'description from name but connot use name' }],
+  title: 'title from test use name',
+  meta: [{ name: 'description', content: 'description from name page [name]' }],
 });
 </script>
 
