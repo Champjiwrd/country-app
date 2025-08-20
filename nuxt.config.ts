@@ -13,6 +13,10 @@ export default defineNuxtConfig({
             'width=device-width, height=device-height, target-densitydpi=device-dpi, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no',
         },
         {
+          name: 'og:title',
+          content: 'og: title from nuxt config',
+        },
+        {
           name: 'description',
           content: 'description from nuxt.config',
         },
