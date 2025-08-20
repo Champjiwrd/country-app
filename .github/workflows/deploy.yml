@@ -1,30 +1,55 @@
+# This workflow deploys a Nuxt 4 static site to GitHub Pages.
+# It automatically runs on every push to the 'main' branch and can also be triggered manually.
+
 name: Deploy to GitHub Pages
 
 on:
+  # Allows you to run this workflow manually from the Actions tab.
   workflow_dispatch:
+  # Automatically trigger the workflow on a push to the main branch.
   push:
     branches:
       - main
 
+# Define a single job that builds and deploys the site.
 jobs:
   build:
+    # Use the latest Ubuntu environment for the runner.
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Check out your repository code.
       - uses: actions/checkout@v3
+
+      # Step 2: Enable Corepack to manage package managers like Yarn.
       - run: corepack enable
+
+      # Step 3: Set up the Node.js environment.
+      # It's recommended to use a recent LTS version.
       - uses: actions/setup-node@v3
         with:
           node-version: "22.14.2"
-      # Pick your own package manager and build script
-      - run: yarn
-      - run: yarn generate  # Use 'nuxt generate' or the equivalent 'yarn generate'
+          cache: "yarn" # Cache the yarn dependencies for faster builds.
+
+      # Step 4: Install project dependencies.
+      - run: yarn install --frozen-lockfile
+
+      # Step 5: Build the static Nuxt site.
+      # The command `yarn generate` should be defined in your package.json scripts.
+      # For Nuxt 4, this typically maps to `nuxi generate`.
+      - run: yarn generate
+
+      # Step 6: Upload the generated static files as a build artifact.
+      # The path should point to the correct output directory.
+      # Nuxt 4's static output is in .output/public by default.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./.output/public  # Make sure this is the correct output folder for your static files
+          path: ./.output/public
 
+  # The deploy job depends on the build job and runs after it completes successfully.
   deploy:
     needs: build
+    # Grant permissions required to deploy to GitHub Pages.
     permissions:
       pages: write
       id-token: write
@@ -33,6 +58,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # Step 7: Deploy the uploaded artifact to GitHub Pages.
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
