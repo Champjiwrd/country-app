@@ -25,7 +25,7 @@ useSeoMeta({
   ogTitle: `คำศัพท์ ${name} แปลว่าอะไร`,
   ogType: 'article',
   // ogUrl: `${currentDictUrl}search/${encodeURIComponent(search.value)}`,
-  // ogDescription: 'ดูความหมายที่พจนานุกรมลองดู Longdo Dictionary',
+  ogDescription: 'ดูความหมายที่พจนานุกรมลองดู Longdo Dictionary',
 });
 </script>
 
